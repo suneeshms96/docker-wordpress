@@ -1,0 +1,31 @@
+version: "3"
+services: 
+  db:
+    container_name: mysql_container
+    image: mysql
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: Suneesh@123#
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wp-user
+      MYSQL_PASSWORD: Suneesh@123#
+    networks: 
+      - wp-net
+    
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    restart: always
+    ports: 
+      - "8080:80"
+    environment: 
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wp-user
+      WORDPRESS_DB_PASSWORD: Suneesh@123#
+      WORDPRESS_DB_NAME: wordpress
+    networks: 
+      - wp-net
+
+networks:
+  wp-net:
+    driver: bridge
