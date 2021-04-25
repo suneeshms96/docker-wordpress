@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wp-user
       MYSQL_PASSWORD: Suneesh@123#
+    volumes: 
+      - ./mysql_vol:/var/lib/mysql
     networks: 
       - wp-net
     
@@ -16,6 +18,8 @@ services:
     container_name: wordpress
     image: wordpress
     restart: always
+    volumes: 
+      - ./wp_vol:/var/www/html
     ports: 
       - "8080:80"
     environment: 
@@ -29,6 +33,6 @@ services:
 networks:
   wp-net:
     driver: bridge
-
-#Note: we need to create a bridged network befor execution
-#command: docker network create --driver bridge wp-net
+volumes: 
+  mysql_vol:
+  wp_vol:
