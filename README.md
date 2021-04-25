@@ -1,3 +1,2 @@
 ## docker-wordpress
- Wordpress mysql installed and configured in docker container
-
+This is a simple docker compose file to install Wordpress and mysql in seperate container and connect the containers using bridge network.
